@@ -1,0 +1,115 @@
+= Understanding var, let, and const. 
+
+There are 3 ways to declare a variable. +
+
+* var 
+* let 
+* const
+
+The oldest of them all is *var*. It has its weaknesses so which is why *let* and *const* were added. 
+
+=== var can be reassigned and redeclared
+
+*var* has been around before let and const. Var let's you *reassign* the variable
+
+For example below:
+
+```
+var howManyCats = 3;
+console.log('I started with ' + howManyCats + ' cats.');
+howManyCats = 20;
+console.log('Now I have ' + howManyCats + ' cats. I have a problem.')
+```
+
+image::img/var.png[]
+
+You can also redeclare *var*, but we cannot redeclare *let* and *const*. 
+Here is what the console will give if you redeclare with *var*
+
+image::img/var3.png[]
+
+If I did the same using *let* or *const* (but in this example I use let), I will get an error: _SyntaxError: Identifier 'numba' has already been declared_
+
+image::img/let2.jpg[]
+
+In retrospect, it's most likely not a good idea to redeclare a variable because most of the time it was an accident. 
+so having *let* and *const* preventing you from redeclaring a variable can actually be a good safety net. 
+
+
+=== var is function scope
+
+If we assigned a variable inside of a function, it cannot be used outside of that function.
+
+```
+function who() {
+    var name = 'Emily'
+}
+console.log(name)
+```
+
+The code above will give the error: _"Uncaught ReferenceError: name is not defined."_
+
+It will work if we assigned the variable outside of the function, but now it is a global variable. 
+
+
+```
+var name;
+function who() {
+    name = 'Emily'
+}
+
+console.log(name)
+```
+
+However, if you assign a variable inside of an if statement, and if the condition is met, the *var* is in the global scope. 
+for example: 
+
+```
+var num = 2;
+
+if (num < 5) {
+  var text = 'I really love to eat chicken';
+  console.log(text)
+}
+```
+
+You can access the variable by simply typing in the variable name. 
+
+image::img/var2.png[]
+
+=== Let and Const is Block Scope
+
+*let* and *const* is a new addition that prevents this from happening by keeping it in the block's scope. 
+*block* is what is inside the curly brackets: *{   in here   }*.
+
+If I used the same code but instead of *var* and used *let* inside the if statement block, it won't let me access the variable _text_ in console. The
+same will happen with *const*
+
+image::img/let.png[]
+
+Another benefit to *let* and *const* keeping the variable inside the block scope is that you can reuse a variable name. It has already been addressed that *let* and *const* will not allow you to redeclare a variable, 
+so knowing that, even though the variable has the same name, they are not linked. 
+
+image::img/let3.png[]
+
+=== Reassigning with let, but not const 
+
+*let* and *var* will let you reassign a variable, but *const* will not. Mainly because *const* stands for constant. 
+
+Here is *let* being reassigned to something different: 
+
+image::img/let4.png[]
+
+Here is *const* attempting to do the same: 
+
+image::img/const.png[]
+
+While of course *const* will let you output the first console log, but for the reassignment to _american_, it won't allow that. 
+
+*const* cannot be reassigned or redeclared, but its object properties can be changed. 
+
+image::img/const2.png[]
+
+A little trick learned from Wes Bos using *Object.freeze(objectVariable)*, you can have an object that strictly cannot be changed. 
+
+image::img/const3.png[]
