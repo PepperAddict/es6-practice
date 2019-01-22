@@ -1,0 +1,8 @@
+= Learn with me  
+
+The best way for me to fully understand something is to try and explain it. 
+
+Below are the subjects which include explanations and pictures to help _future me_ understand. 
+
+link:01.asciidoc[var, let, and const] 
+link:02.asciidoc[arrow functions]

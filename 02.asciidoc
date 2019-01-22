@@ -1,0 +1,102 @@
+= Arrow Functions
+
+Arrow functions can only be an *anonymous* function. Which means it cannot be named. 
+
+Here is how a named function would look like: 
+
+```
+function foo() {
+    //
+}
+```
+But even though we can't name it, we could give it a variable and call it that way. 
+
+```
+const foo = () => { 
+    //
+}
+
+```
+== How to write an arrow function
+
+A classic function look something like this: 
+
+```
+
+(function(one) {
+
+    return one
+
+});
+
+```
+
+arrow function removes the word _function_ and adds a fat arrow *=>*. 
+
+```
+((one) => { 
+    return one
+}
+```
+
+=== 1 argument
+a thing to note is that, if you have 1 argument, you don't need the paranthesis:
+
+```
+(one => {
+    return one
+}
+```
+
+=== 2 or more arguments 
+of course, just like classic functions, if you have more than one argument, you need the paranthesis and the *arguments* separated 
+by commas: 
+
+```
+((one, two, three) => {
+    return one + two + three
+});
+```
+
+=== Implicit return
+
+to simplify it even more, we can do an *implicit return* which means a return is implied when we
+put it all in one line and remove the curly brackets *{}*. 
+
+```
+(one => one);
+
+```
+
+NOTE: However, implicit return only works for one line statements. Anything more complicated than that will need the curly brackets.
+
+
+Now if you want to do an *implicit return* with an *object literal*, you would need to encase it in a parenthesis *()*. The parenthesis will 
+then let the code know that you are passing an *object literal*. 
+
+```
+((one, two) => ({ name: 'pepper', age: 180, height: 58}))
+```
+
+We can also put in an if statement for true/false inside an implicit arrow function easily. 
+For example, we can link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter[filter] these array of numbers by higher than 10:
+
+image:img/arrow.png[]
+
+=== 0 arguments
+
+If your arrow function doesn't have an argument, there are two ways you can write it:
+
+1: A simple empty parenthesis *()*
+
+```
+(() => 'do cats even like cheeseburgers?')
+```
+
+2: an underscore *_*
+
+```
+( _ => 'my cat does not like cheeseburgers!')
+
+```
+

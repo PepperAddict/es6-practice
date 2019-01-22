@@ -77,6 +77,20 @@ You can access the variable by simply typing in the variable name.
 
 image::img/var2.png[]
 
+If you wanted to keep it away from the global scope and use *var*, you can insert it into an *Immediate function invocation* also known as *IFI* which looks like this:
+
+```
+(function () {
+
+})();
+
+```
+With the same if statement inside of an *IFI*, the variable _text_ is now not in the global scope 
+and will give a _Reference error: text is not defined_. 
+
+image::img/var5.png[]
+
+
 === Let and Const is Block Scope
 
 *let* and *const* is a new addition that prevents this from happening by keeping it in the block's scope. 
@@ -113,3 +127,36 @@ image::img/const2.png[]
 A little trick learned from Wes Bos using *Object.freeze(objectVariable)*, you can have an object that strictly cannot be changed. 
 
 image::img/const3.png[]
+
+=== For loop with var, let, and const. 
+
+The for loop is where you can see the difference between the three *var*, *let*, and *const*. 
+
+In the example, the for loop will count from 0 till it's less than 5. 1 second later, it will show what the variable _i_ is. 
+
+*var*: 
+when using var, you can see that _i_ has been overwritten. During the setTimeout, it's not counting
+anymore, but it is spitting out the same _i_ less than 5 times as commanded from the forloop. 
+
+image::img/var4.png[]
+
+*let*: 
+
+If you don't want your variable to be overwritten in the forloop, the best one to use is *let*. 
+Since the variable is constrained to the block, the variable will not be overwritten. The setTimeout will count to less than 5 as well. 
+
+image::img/let5.png[]
+
+*const*: 
+
+const on the otherhand, since const won't let you reassign, it will stay as 0. 
+
+image::img/const4.jpg[]
+
+== Summary 
+
+To put it simply: 
+
+* *var*: can be reassigned and redeclared. Is function scope. Use var if the variable is top-level and needs to be shared across many scopes.
+* *let*: can be reassigned, but cannot be redeclared. Is block scope. Use let for localized variable in smaller scopes.
+* *const*: cannot be reassigned and redeclared. Is block scope. When refactoring your code, switch let to const if the variable shouldn't be reassigned.
