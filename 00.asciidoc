@@ -1,4 +1,9 @@
-= Javascript and ES6+ Vocabulary 
+= Misc Javascript and ES6+
+
+
+== Default Function Arguments 
+
+
 
 == Object Literal 
 
@@ -42,3 +47,4 @@ image:img/var6.png[]
 *let and const* will not let you access the variable and will give the error: Uncaught ReferenceError: kitty is not defined. 
 
 image:img/let6.png[]
+
